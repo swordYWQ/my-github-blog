@@ -30,8 +30,8 @@ npm run clean && weex build android
 --清理项目并发布安卓包
 ```
 
-发包出现错误
-```
+>发包出现错误
+>```
 Error: Error: Command failed: call gradlew.bat  assembleRelease
 isLibProject: false, isAppProject: true
 weex_plugin: []
