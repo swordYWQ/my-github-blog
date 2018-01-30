@@ -27,8 +27,8 @@ weex run android
 weex build android
 ```
 
-## 开发中遇到的坑
-### 1.修改脚手架项目配置
+## 2.开发中遇到的坑
+### 2.1修改脚手架项目配置
 > 默认的weex脚手架项目在webpack中递归为每一个vue文件生成一个实例，和vue常用的写法不一致，所以在这里修改脚手架配置，使开发和正常的vue spa项目开发流程一致。
 
 解决方法: 修改脚手架配置
@@ -52,7 +52,7 @@ new Vue(Vue.util.extend({ el: '#root', router },App))
 -- entry.js
 ```
 
-### 2.安卓环境配置
+### 2.2安卓环境配置
 > weex项目进行简单开发后，希望能在安卓手机上看到效果，使用命令生成项目和包,weex run android 或者weex build android出现错误，提示未设置ANDROID_HOME环境变量
 
 解决方法:配置环境变量
@@ -65,7 +65,7 @@ new Vue(Vue.util.extend({ el: '#root', router },App))
 此时需要重启系统使环境变量全局生效)
 ```
 
-### 3.发包出现错误
+### 2.3发包出现错误
 > weex run android 或者weex build android出现错误
 ```
 Error: Error: Command failed: call gradlew.bat  assembleRelease
