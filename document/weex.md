@@ -82,4 +82,43 @@ A problem occurred configuring project ':app'.
 * Try:
 Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
 ```
+解决方法: jdk版本为9的话，修改jdk版本为8
+安装jdk8并配置环境变量，可能需要重启或注销系统生效。
+
+修改后，之前的报错没了，又出现另一个错误
+```
+Error: Error: Command failed: call gradlew.bat  assembleDebug
+Exception in thread "main" java.lang.NoClassDefFoundError: Could not initialize class java.nio.file.FileSystems$DefaultFileSystemHolder
+        at java.nio.file.FileSystems.getDefault(FileSystems.java:176)
+        at java.nio.file.Paths.get(Paths.java:138)
+        at sun.misc.Launcher$ExtClassLoader.findLibrary(Launcher.java:224)
+        at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1830)
+        at java.lang.Runtime.loadLibrary0(Runtime.java:870)
+        at java.lang.System.loadLibrary(System.java:1122)
+        at sun.security.mscapi.SunMSCAPI$1.run(SunMSCAPI.java:52)
+        at sun.security.mscapi.SunMSCAPI$1.run(SunMSCAPI.java:50)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at sun.security.mscapi.SunMSCAPI.<clinit>(SunMSCAPI.java:50)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+        at java.lang.Class.newInstance(Class.java:442)
+        at sun.security.jca.ProviderConfig$2.run(ProviderConfig.java:221)
+        at sun.security.jca.ProviderConfig$2.run(ProviderConfig.java:206)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at sun.security.jca.ProviderConfig.doLoadProvider(ProviderConfig.java:206)
+        at sun.security.jca.ProviderConfig.getProvider(ProviderConfig.java:187)
+        at sun.security.jca.ProviderList.getProvider(ProviderList.java:233)
+        at sun.security.jca.ProviderList.getService(ProviderList.java:331)
+        at sun.security.jca.GetInstance.getInstance(GetInstance.java:157)
+        at java.security.Security.getImpl(Security.java:695)
+        at java.security.MessageDigest.getInstance(MessageDigest.java:167)
+        at org.gradle.wrapper.PathAssembler.getHash(PathAssembler.java:65)
+        at org.gradle.wrapper.PathAssembler.rootDirName(PathAssembler.java:49)
+        at org.gradle.wrapper.PathAssembler.getDistribution(PathAssembler.java:42)
+        at org.gradle.wrapper.Install.createDist(Install.java:40)
+        at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:126)
+        at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:56)
+```
 解决方法: 待解决
