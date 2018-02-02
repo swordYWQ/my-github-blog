@@ -122,3 +122,31 @@ Exception in thread "main" java.lang.NoClassDefFoundError: Could not initialize 
         at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:56)
 ```
 解决方法: 待解决
+配置jdk环境和安卓环境,系统变量PATH使用绝对路径，修改后注销或重启电脑。
+
+### weex从入门到放弃
+差点放弃，最终还是坚持下来了。
+转而使用react-native,建好demo后，在安卓启动报同样的错误，认识到错误不在weex，还是在环境配置有问题。
+修改好环境后，发现weex和react-native都能跑起来了。
+
+### 2.4 npm run android报错
+运行后打包成功，但是apk打开后render error:-2013 ,命令行报错operation not permitted或者no such file or directory
+
+发现使用修改过脚手架的版本就会报这个错，把脚手架修改回去，可以正常打包，但这样意味着不能使用vue-router管理页面了。
+
+### 项目中使用iconfont字体图标
+由于weex在web端和android以及ios端的图片或样式规则不同，获取本地图片或图标的不方便，所以使用iconfont做项目图标库。
+在web中我们使用iconfont一般是引入生成的css文件(本地或者网络上的)。但是，这样使用图表的方式在安卓或ios上会有些不兼容，所以这里使用weex的dom模块的addRule方法进行添加font-face
+```
+var domModule = weex.requireModule('dom');
+      //目前支持ttf、woff文件，不支持svg、eot类型,moreItem at http://www.iconfont.cn/
+      
+      domModule.addRule('fontFace', {
+        'fontFamily': "iconfont1",
+        'src': "url('http://at.alicdn.com/t/font_562191_fyhx8bsoirnyu8fr.ttf')"
+      });
+使用时<text style="font-family:iconfont1">&#xe61d;</text>
+```
+要注意这里的fontFamily的值不能使用'iconfont'，会与其他样式冲突，使用另一个名字即可
+
+如果需要使用本地资源，图片目录位置在assets下时，可以使用'local://xxx.ttf',本地图片使用方式亦然。
